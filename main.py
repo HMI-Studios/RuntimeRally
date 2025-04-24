@@ -105,6 +105,7 @@ class Board:
                 raise RuntimeError(f"Bot {i} did not send its commands this cycle!")
             
             for cmd in cmds:
+                cmd = cmd.lower()
                 if cmd == 'forward':
                     bot.forward()
                 elif cmd == 'left':
