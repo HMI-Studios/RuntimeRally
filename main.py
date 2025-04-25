@@ -10,14 +10,14 @@ class Bot:
 
     def forward(self):
         if self.d == 0:
-            self.next_x = 0
-            self.next_y += 1
+            self.next_x += 0
+            self.next_y += -1
         elif self.d == 1:
             self.next_x += 1
             self.next_y += 0
         elif self.d == 2:
             self.next_x += 0
-            self.next_y += -1
+            self.next_y += 1
         elif self.d == 3:
             self.next_x += -1
             self.next_y += 0
@@ -138,8 +138,6 @@ class Board:
                 raise RuntimeError('Only one cmd per cycle allowed.')
 
             bot.inputs = cmds
-
-            self.update([bot_id, *cmds])
 
 
 def main():
