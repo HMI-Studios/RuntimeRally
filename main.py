@@ -8,18 +8,18 @@ class Bot:
         self.next_x, self.next_y, self.next_d = self.x, self.y, self.d
         self.inputs = None
 
-    def forward(self):
+    def move(self, speed):
         if self.d == 0:
             self.next_x += 0
-            self.next_y += -1
+            self.next_y -= speed
         elif self.d == 1:
-            self.next_x += 1
+            self.next_x += speed
             self.next_y += 0
         elif self.d == 2:
             self.next_x += 0
-            self.next_y += 1
+            self.next_y += speed
         elif self.d == 3:
-            self.next_x += -1
+            self.next_x -= speed
             self.next_y += 0
 
     def turn(self, direction):
@@ -107,7 +107,11 @@ class Board:
             for cmd in cmds:
                 cmd = cmd.lower()
                 if cmd == 'forward':
-                    bot.forward()
+                    bot.move(1)
+                elif cmd == 'reverse':
+                    bot.move(-1)
+                elif cmd == 'dash':
+                    bot.move(2)
                 elif cmd == 'left':
                     bot.turn(-1)
                 elif cmd == 'right':
